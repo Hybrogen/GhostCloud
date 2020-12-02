@@ -18,8 +18,10 @@ FileTypeMap = {
             'tif': {'typen': '图片', 'ctype': 'image/tiff',},
             'png': {'typen': '图片', 'ctype': 'image/png',},
             'txt': {'typen': '文本文档', 'ctype': 'text/plain',},
+            'pptx': {'typen': 'PowerPoint演示文档', 'ctype': 'application/octet-stream',},
             'docx': {'typen': 'Word文档', 'ctype': 'application/msword',},
             'py': {'typen': 'Python源码', 'ctype': 'application/octet-stream',},
+            'asm': {'typen': '汇编源码', 'ctype': 'application/octet-stream',},
         }
 
 def index(request):
