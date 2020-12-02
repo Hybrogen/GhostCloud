@@ -1,0 +1,117 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="shortcut icon" href="#" />
+		<title>H_On云盘</title>
+	</head>
+
+	<body>
+		<form action="/zrdrw" method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+			<div class="card">
+				<div class="btn-list"> <a href="/honcloudd">&lt;&lt;&lt;查看文件列表</a></div>
+				<div>
+					<input type="text" class="text" value="">
+					<label for="file">
+						<div class="btn">点击选择文件</div>
+					</label>
+					<input type="file" name="wj" id="file" hidden onchange="onFileChange()" />
+				</div>
+				<div class="text-wrap">
+					<input type="submit" class="btn" value="提交文件">
+				</div>
+			</div>
+		</form>
+	</body>
+
+</html>
+
+<script>
+	function onFileChange() {
+		const file = document.querySelector("#file")
+		console.log(file.files[0])
+		document.querySelector('.text').value = file.files[0].name
+	}
+</script>
+
+<style>
+body {
+	width: 100%;
+	padding: 20px 10%;
+	box-sizing: border-box;
+	margin: 0;
+}
+
+  form {
+	  width: 90%;
+	  margin: auto;
+  }
+
+  .text-wrap {
+	  width: 100%;
+	  text-align: center;
+  }
+
+  .btn {
+	  display: inline-block;
+	  box-sizing: border-box;
+	  height: 35px;
+	  width: 150px;
+	  margin-top: 5px;
+	  margin-bottom: 5px;
+	  color: #fff;
+	  background-color: purple;
+	  border-color: purple;
+	  padding: 6px 12px;
+	  font-size: 14px;
+	  font-weight: 400;
+	  text-align: center;
+	  white-space: nowrap;
+	  vertical-align: middle;
+	  border: 1px solid transparent;
+	  border-radius: 4px;
+  }
+
+  .text {
+	  display: inline-block;
+	  height: 35px;
+	  width: calc(100% - 155px);
+	  margin-top: 5px;
+	  margin-bottom: 5px;
+	  color: #000;
+	  /* background-color: #337ab7;
+		 border-color: #2e6da4; */
+	  padding: 6px 12px;
+	  font-size: 14px;
+	  font-weight: 400;
+	  border: 1px solid #ccc;
+	  border-radius: 4px;
+	  outline: none;
+  }
+
+  .text:focus {
+	  box-shadow: 0 0 4px 0px purple;
+	  border: 1px solid transparent;
+  }
+
+  .btn-cover {
+	  display: block;
+	  /* height: 50px;
+width: 200px; */
+	  margin: 0;
+	  background-color: rebeccapurple;
+  }
+
+  .btn-list {
+	  height: 50px;
+	  /* background-color: #ccc; */
+	  font-size: 16px;
+	  font-weight: 600;
+  }
+
+  a {
+	  line-height: 50px;
+	  color: purple;
+	  text-decoration: none;
+  }
+</style>

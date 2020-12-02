@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="shortcut icon" href="#" />
+		<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+						 integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<title>H_On の 文件袋</title>
+	</head>
+
+	<body>
+		<div class="page-header">
+			<div class="title">
+				<h1>{{ listName }}</h1>
+				<small class="title-cloud" hidden> {{ filePath }}</small>
+
+				<a class="upload btn btn-primary" href="/honcloud">
+					<span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>
+					<span>上传文件</span>
+				</a>
+				<a id="open-search" class="upload btn btn-primary" onclick="searchShow()">
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+				</a>
+				<input type="search" id="searchText">
+			</div>
+		</div>
+		<div class="table-responsive table-container">
+			<table class="table table-striped">
+				<tr>
+					<th>文件名</th>
+					<th>文件类型</th>
+					<th>选项</th>
+				</tr>
+
+				{% for file in files %}
+				<tr>
+					<!-- <td><a href="/getfile?fn={{ file }}">{{ file }}</a></td> -->
+					<td>{{ file.name }}</td>
+					<td>{{ file.type }}</td>
+					<td><a href="/getfile?fn={{ file.name }}">下载</a>/
+					<a href="">删除</a></td>
+					<!-- <td><a href="/delfile?fn={{ file.name }}">删除</a></td> -->
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</body>
+
+</html>
+
+<script>
+	const searchText = document.querySelector('#searchText')
+searchText.onkeydown = function (event) {
+	// enter键
+	if (event.keyCode === 13) {
+		searchShow()
+	}
+}
+function searchShow() {
+	console.log(searchText.value)
+	window.open('?keyWord=' + searchText.value, '_self')
+}
+</script>
+
+<style type="text/css">
+body {
+	width: 100%;
+	padding: 20px 10%;
+	min-width: 980px;
+}
+
+  .page-header {
+	  width: 90%;
+	  margin: 20px auto;
+  }
+
+  small {
+	  font-size: 24px;
+	  font-weight: 400;
+	  color: rgb(119, 119, 119);
+  }
+
+  p.audio {
+	  font-size: 2em;
+	  /* letter-spacing: 0em; */
+	  color: #ffffff;
+
+	  background: transparent;
+  }
+
+  p.hiden {
+	  display: none;
+  }
+
+  a {
+	  display: inline-block;
+	  text-decoration: none;
+	  color: purple;
+  }
+
+  a:hover {
+	  text-decoration: underline;
+	  color: red;
+  }
+
+  .table-container {
+	  width: 90%;
+	  margin: 20px auto;
+  }
+
+  .upload {
+	  float: right;
+	  line-height: 25px;
+	  height: 39px;
+	  /* width: 39px; */
+	  background-color: purple;
+	  border: purple 1px solid;
+	  margin: auto 10px;
+	  border-radius: 26px;
+  }
+
+  .upload:active,
+  :visited {
+	  background-color: purple !important;
+  }
+
+  .title {
+	  display: block;
+	  height: 40px;
+	  width: 100%;
+
+  }
+
+  h1 {
+	  display: inline-block;
+	  margin: 0;
+	  height: 40px;
+  }
+
+  .glyphicon {
+	  line-height: 25px;
+  }
+
+  span {
+	  display: inline-block;
+	  height: 25px;
+	  line-height: 25px;
+  }
+
+  .upload:hover {
+	  background-color: purple;
+  }
+
+  #searchText {
+	  float: right;
+	  width: 200px;
+	  padding: 0 10px;
+	  line-height: 25px;
+	  height: 39px;
+	  border: 1px solid purple;
+	  border-radius: 26px 0 0 26px;
+	  box-shadow: 0 0 4px 0px purple;
+	  outline: none;
+	  color: purple;
+	  margin-right: -10px;
+  }
+
+  #open-search {
+	  border-radius: 0 26px 26px 0;
+	  box-shadow: 0 0 4px 0px purple;
+  }
+
+  input:focus {
+	  box-shadow: 0 0 4px 0px purple;
+	  border: 1px solid transparent;
+  }
+</style>

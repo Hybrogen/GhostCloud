@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <title>H_On の 文件袋</title>
+</head>
+
+<body>
+  <div class="page-header">
+    <h1>{{ listName }} <small> {{ filePath }}</small><a class="upload btn btn-primary" href="/honcloud">上传文件</a></h1>
+  </div>
+  <div class="table-responsive table-container">
+    <table class="table table-striped">
+      <tr>
+        <th>文件名</th>
+        <th>文件类型</th>
+        <th>选项</th>
+      </tr>
+      {% for file in files %}
+      <tr>
+        <!-- <td><a href="/getfile?fn={{ file }}">{{ file }}</a></td> -->
+        <td>{{ file.name }}</td>
+		<td>{{ file.type }}</td>
+        <td><a href="/getfile?fn={{ file.name }}">下载</a></td>
+		<!-- <td><a href="/delfile?fn={{ file.name }}">删除</a></td> -->
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</body>
+
+</html>
+
+<style type="text/css">
+  body {
+    width: 100%;
+    padding: 20px 10%;
+
+  }
+
+  .page-header {
+    width: 90%;
+    margin: auto;
+  }
+
+  p.audio {
+    font-size: 2em;
+    /* letter-spacing: 0em; */
+    color: #ffffff;
+
+    background: transparent;
+  }
+
+  p.hiden {
+    display: none;
+  }
+
+  a {
+    /* display: block;
+    height: 30px;
+    text-align: center; */
+    text-decoration: none;
+    color: purple;
+  }
+
+  a:hover {
+    text-decoration: underline;
+    color: red;
+  }
+
+  .table-container {
+    width: 90%;
+    margin: 20px auto;
+  }
+
+  .upload {
+    float: right;
+    line-height: 26px;
+    background-color: purple;
+    border: purple 1px solid;
+  }
+
+  .upload:active,
+  :visited {
+    background-color: purple !important;
+  }
+
+  h1 {
+    height: 40px;
+  }
+
+  .upload:hover {
+    background-color: purple;
+  }
+</style>
